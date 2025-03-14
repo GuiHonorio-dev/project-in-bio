@@ -23,8 +23,8 @@
    const arrayBuffer = await file.arrayBuffer();
    const buffer = Buffer.from(arrayBuffer);
    await storageRef.save(buffer);
-  
-  console.log(storage.name) 
+ 
+   const imagePath = storageRef.name
    
    try {
      await db
@@ -37,7 +37,7 @@
          projectName,
          projectDescription,
          projectUrl,
-        //  imagePath,
+         imagePath,
          createdAt: Timestamp.now().toMillis(),
        });
  
