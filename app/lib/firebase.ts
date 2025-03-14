@@ -18,7 +18,18 @@ if(!getApps().length) {
   })
 }
 
+export async function getDownloadURLFromPath(path: string) {
+  if (!path) return;
 
+  const file = storage.file(path)
+
+  const [url] = await file.getSignedUrl({
+    action: "read",
+    expires: "03-01-2500"
+  })
+  
+  return url
+}
 
 export const db = getFirestore()
 export const storage = getStorage().bucket(process.env.FIREBASE_STORAGE_BUCKET)
