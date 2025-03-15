@@ -1,5 +1,6 @@
 import { Facebook, Github, Instagram, Linkedin, Twitter, Plus } from 'lucide-react'
-import { Button } from '../ui/button'
+import { Button } from '../../ui/button'
+import { EditSocialLinks } from '../edit-social-links'
 
 export function UserCard() {
   return (
@@ -34,9 +35,8 @@ export function UserCard() {
           <button className='p-3 rounded-xl bg-[#1E1E1E] hover:bg-[#2E2E2E]'>
             <Twitter />
           </button>
-          <button className='p-3 rounded-xl bg-[#1E1E1E] hover:bg-[#2E2E2E]'>
-            <Plus />
-          </button>
+          <EditSocialLinks />
+          
         </div>
       </div>
       <div className='flex flex-col gap-3 w-full h-[172px]'>
