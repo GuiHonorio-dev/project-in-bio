@@ -28,7 +28,7 @@
    
    try {
      await db
-       .collection("projects")
+       .collection("profiles")
        .doc(profileId)
        .collection("projects")
        .doc(generatedId)

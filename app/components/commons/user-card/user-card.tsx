@@ -5,10 +5,11 @@ import Link from 'next/link'
 import type { ProfileData } from '@/app/server/get-profile-data'
 import { AddCustomLink } from './add-custom-link'
 import { formatUrl } from '@/app/lib/utils'
+import { EditUserCard } from './edit-user-card'
 
-export function UserCard({ profileData }: { profileData?: ProfileData }) {
+export function UserCard({ profileData, isOwner }: { profileData?: ProfileData, isOwner: boolean }) {
   return (
-    <div className="w-[348px] flex flex-col gap-5 items-center p-5 border border-zinc-600 bg-[#121212] rounded-3xl text-white ">
+    <div className="min-w-[348px] flex flex-col gap-5 items-center p-5 border border-zinc-600 bg-[#121212] rounded-3xl text-white ">
       <div className="size-48">
         <img 
           src="https://github.com/GuiHonorio-dev.png" 
@@ -18,10 +19,11 @@ export function UserCard({ profileData }: { profileData?: ProfileData }) {
       </div>
       <div className="flex flex-col gap-2 w-full">
         <div className="flex items-center gap-2">
-          <h3 className="text-3xl font-bold min-w-0 overflow-hidden">Guilherme Leandro</h3>
+          <h3 className="text-3xl font-bold min-w-0 overflow-hidden">{profileData?.name || "a"}</h3>
         </div>
+        { isOwner && <EditUserCard profileData={profileData} /> }
         <p className="opacity-40 ">
-          Programador web
+          { profileData?.description || "" }
         </p>
       </div>
       <div className="flex flex-col gap-2 w-full">
@@ -51,10 +53,10 @@ export function UserCard({ profileData }: { profileData?: ProfileData }) {
           </Link>
           )}
 
-          <EditSocialLinks socialMedias={profileData?.socialMedias} />
+          { isOwner &&  <EditSocialLinks socialMedias={profileData?.socialMedias} /> }
         </div>
       </div>
-      <div className='flex flex-col gap-3 w-full h-[172px]'>
+      <div className='flex flex-col gap-3 w-full min-h-[172px]'>
           <div className='w-full flex flex-col items-center gap-3'>
             {profileData?.link1 && (
             <Link
@@ -83,9 +85,9 @@ export function UserCard({ profileData }: { profileData?: ProfileData }) {
               <Button className="w-full">{profileData.link3.title}</Button>
             </Link>
           )}
+            { isOwner && <AddCustomLink /> }
           </div>
       </div>
-            <AddCustomLink />
     </div>
   )
 }

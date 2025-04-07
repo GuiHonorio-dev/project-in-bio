@@ -5,6 +5,8 @@ import type { Link } from "../actions/add-custom-links"
 export type ProfileData =  {
   userId: string,
   totalVisits: number,
+  name: string,
+  description: string,
   createdAt: number
   socialMedias?: {
     github: string
@@ -37,12 +39,11 @@ export async function getProfileData(profileId: string) {
 
 export async function getProfileProjects(profileId: string) {
   const snapshot = await db
-    .collection("projects")
+    .collection("profiles")
     .doc(profileId)
     .collection("projects")
     .get()
 
-  console.log('PROFILEEEEEEEEEEEEEEEEEE')
 
   return snapshot.docs.map((doc) => doc.data()) as ProjectData[]
 }
