@@ -1,5 +1,6 @@
 "use client";
 
+import { increaseProjectVisits } from "@/app/actions/increase-project-visits";
 import { formatUrl } from "@/app/lib/utils";
 import { ProjectData } from "@/app/server/get-profile-data";
 import Link from "next/link";
@@ -19,10 +20,13 @@ export function ProjectCard({
   description?: string;
 }) {
   const { profileId } = useParams();
+
   const formattedUrl = formatUrl(project?.projectUrl || "https://projectinbio.com");
 
   async function handleClick() {
-    if (!profileId || !project?.id || isOwner) return;
+    if(!profileId || !project?.id || isOwner) return;
+      await increaseProjectVisits(profileId as string, project?.id)
+    
 
   }
 

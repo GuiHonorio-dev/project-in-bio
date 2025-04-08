@@ -33,6 +33,7 @@
        .collection("projects")
        .doc(generatedId)
        .set({
+         id: generatedId,
          userId: session.user?.id,
          projectName,
          projectDescription,
