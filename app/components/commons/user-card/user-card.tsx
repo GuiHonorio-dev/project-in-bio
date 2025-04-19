@@ -7,7 +7,8 @@ import { AddCustomLink } from './add-custom-link'
 import { formatUrl } from '@/app/lib/utils'
 import { EditUserCard } from './edit-user-card'
 
-export function UserCard({ profileData, isOwner }: { profileData?: ProfileData, isOwner: boolean }) {
+export function UserCard({ profileData, isOwner }: { profileData?: ProfileData, isOwner?: boolean }) {
+  const icons = [Github, Instagram, Linkedin, Twitter, Plus];
   return (
     <div className="min-w-[348px] flex flex-col gap-5 items-center p-5 border border-zinc-600 bg-[#121212] rounded-3xl text-white ">
       <div className="size-48">
@@ -19,11 +20,11 @@ export function UserCard({ profileData, isOwner }: { profileData?: ProfileData, 
       </div>
       <div className="flex flex-col gap-2 w-full">
         <div className="flex items-center gap-2">
-          <h3 className="text-3xl font-bold min-w-0 overflow-hidden">{profileData?.name || "a"}</h3>
+          <h3 className="text-3xl font-bold min-w-0 overflow-hidden">{profileData?.name || "Guilherme Leandro"}</h3>
         </div>
         { isOwner && <EditUserCard profileData={profileData} /> }
         <p className="opacity-40 ">
-          { profileData?.description || "" }
+          { profileData?.description || "Descricao do meu perfil" }
         </p>
       </div>
       <div className="flex flex-col gap-2 w-full">
@@ -52,6 +53,16 @@ export function UserCard({ profileData, isOwner }: { profileData?: ProfileData, 
             <Twitter />
           </Link>
           )}
+
+{!profileData &&
+            icons.map((Icon, index) => (
+              <button
+                key={index}
+                className="p-3 rounded-xl bg-[#1E1E1E] hover:bg-[#2E2E2E]"
+              >
+                <Icon />
+              </button>
+            ))}
 
           { isOwner &&  <EditSocialLinks socialMedias={profileData?.socialMedias} /> }
         </div>
@@ -84,6 +95,11 @@ export function UserCard({ profileData, isOwner }: { profileData?: ProfileData, 
             >
               <Button className="w-full">{profileData.link3.title}</Button>
             </Link>
+          )}
+          {!profileData && (
+            <button className="p-3 rounded-xl bg-[#1E1E1E] hover:bg-[#2E2E2E]">
+              <Plus />
+            </button>
           )}
             { isOwner && <AddCustomLink /> }
           </div>

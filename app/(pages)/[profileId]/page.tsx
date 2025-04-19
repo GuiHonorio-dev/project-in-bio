@@ -36,7 +36,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ profil
         </Link>
       </div>
       <div className="w-1/2 flex justify-center h-min">
-        <UserCard isOwner={isOwner} profileData={profileData} />
+        <UserCard />
       </div>
       <div className="w-full flex justify-center content-start gap-4 flex-wrap overflow-y-auto">
         {
