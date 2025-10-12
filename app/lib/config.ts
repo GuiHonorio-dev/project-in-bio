@@ -1,0 +1,1 @@
+export const TRIA_DAYS = 3
