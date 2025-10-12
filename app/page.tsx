@@ -1,3 +1,4 @@
+import { FAQ } from "./components/landingpage/faq";
 import { Header } from "./components/landingpage/header";
 import { Hero } from "./components/landingpage/hero";
 import { Pricing } from "./components/landingpage/pricing";
@@ -10,6 +11,7 @@ export default function Home() {
       <Hero />
       <VideoExplanation />
       <Pricing />
+      <FAQ />
     </div>
   );
 }
