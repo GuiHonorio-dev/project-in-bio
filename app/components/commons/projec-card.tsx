@@ -1,6 +1,6 @@
 export function ProjectCard() {
   return (
-    <div className="w-[430px] h-[132px] flex gap-5 bg-background-secondary p-3 rounded-[20px] border border-transparent hover:border-borderSecondary ">
+    <div className="w-[400px] h-[155px] flex gap-5 bg-background-secondary p-3 rounded-[20px] border border-transparent hover:border-borderSecondary ">
       <div className="size-24 rounded-md overflow-hidden shrink-0">
         <img src="/project1.jpg" alt="Projeto" className="size-full object-cover" />
       </div>
