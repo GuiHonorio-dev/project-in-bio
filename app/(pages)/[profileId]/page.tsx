@@ -2,10 +2,11 @@ import { ProjectCard } from "@/app/components/commons/projec-card"
 import { TotalVisits } from "@/app/components/commons/total-visits"
 import { UserCard } from "@/app/components/commons/user-card"
 import { auth } from "@/app/lib/auth"
-import { getProfileData } from "@/app/server/get-profile-data"
+import { getProfileData, getProfileProjects } from "@/app/server/get-profile-data"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { NewProject } from "./new-project"
+import { getDownloadURLFromPath } from "@/app/lib/firebase"
 
 export default async function ProfilePage({ params }: { params: Promise<{ profileId: string }> }) {
   const { profileId } = await params
@@ -15,6 +16,8 @@ export default async function ProfilePage({ params }: { params: Promise<{ profil
   const profileData = await getProfileData(profileId)
 
   if(!profileData) return notFound()
+
+  const projects = await getProfileProjects(profileId)
 
   const isOwner = profileData.userId === session?.user?.id
 
@@ -30,13 +33,17 @@ export default async function ProfilePage({ params }: { params: Promise<{ profil
         <UserCard />
       </div>
       <div className="w-full flex justify-center content-start gap-4 flex-wrap overflow-y-auto">  
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
+        
+        {
+          projects.map(async (project) => (
+            <ProjectCard 
+              key={project.id}
+              project={project}
+              img={await getDownloadURLFromPath(project.imagePath)}
+              isOwner={isOwner}
+            />
+          ))
+        }
 
         {
           isOwner && <NewProject profileId={profileId} />
