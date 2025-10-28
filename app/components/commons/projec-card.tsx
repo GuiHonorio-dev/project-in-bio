@@ -1,11 +1,12 @@
 "use client"
 
+import { formatUrl } from "@/app/lib/utils";
 import type { ProjectData } from "@/app/server/get-profile-data";
 import Link from "next/link";
 
 export function ProjectCard({ project, isOwner, img }: { project: ProjectData, isOwner: boolean, img: string | undefined }) {
   const projectUrl = project.projectUrl
-  const formattedUrl = projectUrl.startsWith("http") ? projectUrl : `https://${projectUrl}`
+  const formattedUrl = formatUrl(project.projectUrl)
 
   function handleClick() {
     console.log('CLICOU')
