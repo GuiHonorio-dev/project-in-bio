@@ -38,8 +38,8 @@ export function UserCard({
             )
           }
           {
-            profileData?.socialMedias?.linkeding && (
-                <Link href={profileData?.socialMedias?.linkeding} target='_blank' className='p-3 rounded-xl bg-[#1E1E1E] hover:bg-[#2E2E2E] '>
+            profileData?.socialMedias?.linkedin && (
+                <Link href={profileData?.socialMedias?.linkedin} target='_blank' className='p-3 rounded-xl bg-[#1E1E1E] hover:bg-[#2E2E2E] '>
                   <Linkedin />
               </Link>
             )

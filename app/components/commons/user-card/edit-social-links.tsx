@@ -15,7 +15,7 @@ export function EditSocialLinks({
   socialMedias?: {
     github: string
     instagram: string
-    linkeding: string
+    linkedin: string
     twitter: string
   } 
 }) {
@@ -25,7 +25,7 @@ export function EditSocialLinks({
 
   const [github, setGithub] = useState(socialMedias?.github || "")
   const [instagram, setInstagram] = useState(socialMedias?.instagram || "")
-  const [linkedin, setLinkedin] = useState(socialMedias?.linkeding || "")
+  const [linkedin, setLinkedin] = useState(socialMedias?.linkedin || "")
   const [twitter, setTwitter] = useState(socialMedias?.twitter || "")
 
   const { profileId } = useParams()

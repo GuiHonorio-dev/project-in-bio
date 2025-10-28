@@ -8,7 +8,7 @@ export interface ProfileData {
   socialMedias?: {
     github: string
     instagram: string
-    linkeding: string
+    linkedin: string
     twitter: string
   }
   updatedAt?: number
