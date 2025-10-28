@@ -18,11 +18,12 @@ export function EditSocialLinks() {
   const [linkedin, setLinkedin] = useState("")
   const [twitter, setTwitter] = useState("")
 
+  const { profileId } = useParams()
+  const router = useRouter()
+  
   async function handleAddSocialLinks() {
       setIsSavingSocialLinks(true)
 
-      const { profileId } = useParams()
-      const router = useRouter()
 
       if(!profileId) return;
 
