@@ -3,6 +3,9 @@ import { db } from "../lib/firebase"
 import type { Link } from "../actions/add-custom-links";
 
 export interface ProfileData {
+  name?: string
+  description?: string
+  imagePath?: string
   userId: string;
   totalVisits: number
   createdAt: number

@@ -50,7 +50,7 @@ export function AddCustomLink() {
 
   return (
     <>
-      <button onClick={() => setIsModalOpen(true)} className='mt-5 p-3 rounded-xl bg-[#1E1E1E] hover:bg-[#2E2E2E]'>
+      <button onClick={() => setIsModalOpen(true)} className='p-3 rounded-xl bg-[#1E1E1E] hover:bg-[#2E2E2E]'>
         <Plus />
       </button>
       <Modal isOpen={isModalOpen} setIsOpen={setIsModalOpen}>
