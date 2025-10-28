@@ -5,6 +5,13 @@ export interface ProfileData {
   userId: string;
   totalVisits: number
   createdAt: number
+  socialMedias?: {
+    github: string
+    instagram: string
+    linkeding: string
+    twitter: string
+  }
+  updatedAt?: number
 }
 
 export interface ProjectData {
