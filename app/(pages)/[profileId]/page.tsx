@@ -1,12 +1,12 @@
 import { ProjectCard } from "@/app/components/commons/projec-card"
 import { TotalVisits } from "@/app/components/commons/total-visits"
-import { UserCard } from "@/app/components/commons/user-card"
+import { UserCard } from "@/app/components/commons/user-card/user-card"
 import { auth } from "@/app/lib/auth"
 import { getProfileData, getProfileProjects } from "@/app/server/get-profile-data"
-import Link from "next/link"
 import { notFound } from "next/navigation"
 import { NewProject } from "./new-project"
 import { getDownloadURLFromPath } from "@/app/lib/firebase"
+import Link from "next/link"
 
 export default async function ProfilePage({ params }: { params: Promise<{ profileId: string }> }) {
   const { profileId } = await params
@@ -18,7 +18,6 @@ export default async function ProfilePage({ params }: { params: Promise<{ profil
   if(!profileData) return notFound()
 
   const projects = await getProfileProjects(profileId)
-
   const isOwner = profileData.userId === session?.user?.id
 
   return (
@@ -39,7 +38,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ profil
             <ProjectCard 
               key={project.id}
               project={project}
-              img={await getDownloadURLFromPath(project.imagePath)}
+              img={await getDownloadURLFromPath(project.imagePath) || ""}
               isOwner={isOwner}
             />
           ))

@@ -14,3 +14,21 @@
   --color-accent-green: #87BB2D;
   --color-accent-pink: #B5446B;
 }
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(100, 100, 100, 0.5);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
