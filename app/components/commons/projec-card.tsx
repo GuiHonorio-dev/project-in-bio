@@ -1,15 +1,21 @@
 "use client"
 
+import { increaseProjectVisits } from "@/app/actions/increase-project-visits";
 import { formatUrl } from "@/app/lib/utils";
 import type { ProjectData } from "@/app/server/get-profile-data";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 
 export function ProjectCard({ project, isOwner, img }: { project: ProjectData, isOwner: boolean, img: string | undefined }) {
   const projectUrl = project.projectUrl
   const formattedUrl = formatUrl(project.projectUrl)
 
-  function handleClick() {
-    console.log('CLICOU')
+  const {profileId} = useParams()
+
+
+  async function handleClick() {
+    if(!profileId || !project.id || !isOwner) return;
+    await increaseProjectVisits(profileId as string, project.id)
   }
 
   return (
