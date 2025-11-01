@@ -14,8 +14,10 @@ export async function UserCard({
   isOwner
 }: {
   profileData?: ProfileData,
-  isOwner: boolean
+  isOwner?: boolean
 }) {
+
+  const icons = [Github, Instagram, Linkedin, Twitter, Plus]
 
   return (
     <div className="w-fit flex flex-col gap-5 items-center p-5 border border-white border-opacity-10 bg-[#121212] rounded-3xl text-white">
@@ -62,6 +64,21 @@ export async function UserCard({
               </Link>
             )
           }
+
+          {
+
+            !profileData &&
+            icons.map((Icon, index) => (
+              <button
+                key={index}
+                className='p-3 rounded-xl bg-[#1E1E1E] hover:bg-[#2E2E2E]'
+              >
+                <Icon />
+              </button>
+            ))
+
+          }
+
           {
             isOwner && <EditSocialLinks socialMedias={profileData?.socialMedias} /> 
           }
